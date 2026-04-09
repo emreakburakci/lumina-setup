@@ -3,16 +3,858 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Setup İndir</title>
+    <title>Premium Uygulama - Download</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 200, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 127, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 127, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Floating orbs */
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.3) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float1 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 127, 255, 0.3) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: float2 25s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.2) 0%, transparent 70%);
+            top: 50%;
+            right: -150px;
+            animation: float3 30s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -30px); }
+            66% { transform: translate(-20px, 30px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-40px, 40px); }
+            66% { transform: translate(40px, -20px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, 40px); }
+            66% { transform: translate(-30px, -40px); }
+        }
+
+        /* Premium neon glows */
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(0, 255, 200, 0.5),
+                    0 0 20px rgba(0, 255, 200, 0.3),
+                    0 0 30px rgba(0, 255, 200, 0.1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(0, 255, 200, 0.8),
+                    0 0 40px rgba(0, 255, 200, 0.5),
+                    0 0 60px rgba(0, 255, 200, 0.2),
+                    0 0 80px rgba(255, 0, 127, 0.3);
+            }
+        }
+
+        @keyframes neonPulseRose {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(255, 0, 127, 0.5),
+                    0 0 20px rgba(255, 0, 127, 0.3);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(255, 0, 127, 0.8),
+                    0 0 40px rgba(255, 0, 127, 0.5),
+                    0 0 60px rgba(0, 255, 200, 0.3);
+            }
+        }
+
+        @keyframes neonPulseBlue {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(0, 127, 255, 0.5),
+                    0 0 20px rgba(0, 127, 255, 0.3);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(0, 127, 255, 0.8),
+                    0 0 40px rgba(0, 127, 255, 0.5),
+                    0 0 60px rgba(255, 200, 0, 0.3);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Header/Navigation */
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 14, 39, 0.7);
+            border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00ffc8 0%, #0080ff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0a0e27;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffc8 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffc8, #ff007f);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00ffc8;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 6rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: 700px;
+            animation: slideIn 1s ease-out 0.2s both;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 .neon-cyan {
+            animation: neonPulse 4s ease-in-out infinite;
+        }
+
+        .hero-content h1 .neon-rose {
+            animation: neonPulseRose 4s ease-in-out infinite;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #909090;
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        /* Download buttons container */
+        .download-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            animation: slideIn 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1.1rem 2.8rem;
+            font-size: 1rem;
+            border: 2px solid;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            border-color: #00ffc8;
+            color: #00ffc8;
+            background: rgba(0, 255, 200, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 200, 0.2), inset 0 0 20px rgba(0, 255, 200, 0.05);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 200, 0.3), transparent);
+            transition: left 0.6s ease;
+            animation: shimmer 2s infinite;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 200, 0.2) 0%, rgba(0, 127, 255, 0.1) 100%);
+            color: #ffffff;
+            border-color: #00ffc8;
+            box-shadow: 0 0 40px rgba(0, 255, 200, 0.4), 
+                       inset 0 0 30px rgba(0, 255, 200, 0.1),
+                       0 10px 40px rgba(0, 255, 200, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border-color: rgba(0, 127, 255, 0.5);
+            color: #0080ff;
+            background: rgba(0, 127, 255, 0.03);
+        }
+
+        .btn-secondary:hover {
+            border-color: #0080ff;
+            background: rgba(0, 127, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 127, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        .file-info {
+            color: #606060;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+
+        .file-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideIn 1s ease-out 0.3s both;
+        }
+
+        .image-frame {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .image-frame::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #00ffc8 0%, #ff007f 50%, #0080ff 100%);
+            opacity: 0;
+            animation: neonPulse 4s ease-in-out infinite;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .image-frame img {
+            width: 100%;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 255, 200, 0.3);
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0, 255, 200, 0.15);
+            position: relative;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            animation: slideIn 1s ease-out 0.4s both;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 200, 0.1);
+            border-radius: 12px;
+            background: rgba(0, 20, 40, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(0, 255, 200, 0.3);
+            background: rgba(0, 20, 40, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffc8 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #909090;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(0, 255, 200, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+
+        .features-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header h2 span {
+            animation: neonPulseRose 4s ease-in-out infinite;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #909090;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: rgba(15, 20, 50, 0.4);
+            border: 1px solid rgba(0, 255, 200, 0.1);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 255, 200, 0.3);
+            background: rgba(0, 255, 200, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 255, 200, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #a0a0a0;
+            line-height: 1.8;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0, 255, 200, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: slideIn 1s ease-out 0.6s both;
+        }
+
+        footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: #909090;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: #00ffc8;
+        }
+
+        footer-bottom {
+            text-align: center;
+            color: #606060;
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 200, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 4rem 2rem;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .download-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem;
+            }
+
+            footer-links {
+                gap: 1rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-        <h1>Lumina v1.0 Hazır!</h1>
-        <p>Elektronik altyapısı tamamlanan projeniz için kontrol yazılımını indirin.</p>
-        <a href="https://github.com/emreakburakci/lumina-setup/releases/download/lumina/Lumina_Setup_Final.exe" 
-           style="background: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
-           Setup.exe İndir (32 MB)
-        </a>
-    </div>
+    <!-- Floating orbs background -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">◆</div>
+            <div class="logo-text">NEXUS</div>
+        </div>
+        <nav>
+            <a href="#features">Özellikler</a>
+            <a href="#download">İndir</a>
+            <a href="#support">Destek</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="download">
+        <div class="hero-content">
+            <h1>
+                Teknolojinin Gücünü
+                <span class="neon-cyan">Elinize Alın</span>
+            </h1>
+            <p>Premium performans ve lüks tasarımın birleşimiyle, iş dünyasının en zorlayıcı görevlerini saniyeler içinde tamamlayın.</p>
+            
+            <div class="download-container">
+                <button class="btn btn-primary" onclick="downloadApp()">
+                    <span class="btn-icon">⬇</span>
+                    Premium İndir
+                </button>
+                <button class="btn btn-secondary" onclick="openDetails()">
+                    <span class="btn-icon">?</span>
+                    Detayları Gör
+                </button>
+            </div>
+
+            <div class="file-info">
+                <span>✓ Tüm Platformlar Uyumlu</span>
+                <span>•</span>
+                <span>150MB</span>
+                <span>•</span>
+                <span>v2.0 Final</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="image-frame">
+                <img src="https://via.placeholder.com/500x550/1a1a2e/00ffc8?text=Premium+App" alt="Premium Uygulama">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Aktif Kullanıcı</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime Güvence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Kullanıcı Puanı</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Teknik Destek</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Neden <span>NEXUS?</span></h2>
+                <p>Endüstri lideri özellikler ve süpriz performans ile işini bir sonraki seviyeye taşı</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Hıpersonic Hız</h3>
+                    <p>GPU-optimized motoru ile 0.001 saniye yanıt süresi. Rakiplerinizi açık ara geride bırakın.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Kripto Güvenlik</h3>
+                    <p>Military-grade encryption ve multi-factor authentication. Verileriniz kale gibi korunan bir kalede.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Premium UI/UX</h3>
+                    <p>Award-winning tasarım ekibi tarafından pixel-perfect arayüz. Her detay mühendislik şaheseri.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Evrensel Uyumlu</h3>
+                    <p>Windows, macOS, Linux, iOS ve Android üzerinde tamamen senkronize çalışır.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Machine learning algoritmaları tarafından güçlendirilmiş akıllı otomasyonlar.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Sync</h3>
+                    <p>Sınırsız cloud depolama ve anlık senkronizasyon tüm cihazlarınız arasında.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Pro</h3>
+                    <p>Real-time dashboards ve ileri veri analiz araçları ile işletme zekasını denetleyin.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Continuous Updates</h3>
+                    <p>Haftada üç kez güncelleme. Her zaman en yeni özellikler ile ön saflarda kalın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <footer-links>
+            <a href="#">Gizlilik Politikası</a>
+            <a href="#">Kullanım Şartları</a>
+            <a href="#">İletişim</a>
+            <a href="#">Blog</a>
+            <a href="#">API Dokümantasyonu</a>
+        </footer-links>
+        <footer-bottom>
+            <p>&copy; 2024 NEXUS. Premium Software Solutions. Tüm hakları saklıdır.</p>
+        </footer-bottom>
+    </footer>
+
+    <script>
+        function downloadApp() {
+            const downloadUrl = 'https://github.com/emreakburakci/lumina-setup/releases/download/lumina/Lumina_Setup_Final.exe';
+            // GitHub releases için: 'https://github.com/username/repo/releases/download/v2.0/Setup.exe'
+            window.location.href = downloadUrl;
+        }
+
+        function openDetails() {
+            alert('📱 NEXUS - Premium Edition\n\n' +
+                  '━━━━━━━━━━━━━━━━━━━\n' +
+                  'Sürüm: 2.0 Final\n' +
+                  'Boyut: 150MB\n' +
+                  'Lisans: Perpetual\n\n' +
+                  '✓ Sistem Gereksinimleri:\n' +
+                  '  • Windows 10+ / macOS 11+ / Ubuntu 20.04+\n' +
+                  '  • 8GB RAM (16GB+ Tavsiye)\n' +
+                  '  • 2GB Boş Alan\n' +
+                  '  • Dual-Core 2.0GHz Processor\n\n' +
+                  '🎁 Ek Avantajlar:\n' +
+                  '  • 30 Gün Para İade Garantisi\n' +
+                  '  • Yaşam Boyu Teknik Destek\n' +
+                  '  • Ücretsiz Tüm Güncellemeler');
+        }
+
+        // Smooth scroll animations
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Interactive button effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
